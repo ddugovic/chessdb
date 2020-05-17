@@ -1,0 +1,19 @@
+name: MonoDevelop
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup MonoDevelop
+      run: sudo apt install mono-devel
+    - name: Build
+      run: cd workers/Client_Chess && mono .
